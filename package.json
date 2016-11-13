@@ -1,0 +1,16 @@
+{
+  "name": "orbitals",
+  "version": "1.0.0",
+  "description": "Colorful cube floaties",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kshaa/orbitals.git"
+  },
+  "author": "Krišjānis Veinbahs",
+  "license": "ISC",
+  "dependencies": {
+    "clone": "^2.0.0",
+    "dat.gui": "^0.6.1",
+    "three": "^0.82.1"
+  }
+}
