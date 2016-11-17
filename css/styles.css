@@ -1,31 +1,21 @@
-body {
-    margin: 0;
-}
+* { margin: 0; transition: 0.25s; }
 
-canvas {
-    width: 100%;
-    height: 100%;
-}
-
-#sim_container {
-}
-
-#gui_container {
+#gui select { width: 100%; margin-top: 4px; }
+#gui input[type=text] { margin-top: 4px; height: 70%; }
+#gui input[type=checkbox] { float: right; }
+#gui .slider { margin-top: 4px; margin-left: 1px; padding: 0; border-radius: 0; }
+#gui .slider-fg { border-radius: 0; }
+#gui .slider-fg::after { display: none; }
+#gui:hover { opacity: 1.0; }
+#gui {
     opacity: 0.65;
     position: absolute;
     z-index: 1;
+    top:1%;
     right:1%;
 }
-
-#gui_container:hover {
-    opacity: 1.0;
-}
-
-.noselect {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+#gui #configuration {
+    visibility: hidden;
+    width: 0;
+    height: 0;
 }

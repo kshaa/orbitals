@@ -5,15 +5,19 @@
         <title>Orbitals</title>
     </head>
     <body>
-        <div id="sim_container">
-        <div id="gui_container" class="noselect">
+        <div id="threejs"></div>
+        <div id="gui">
+            <input type="file" id="configuration" name="configuration"/>
         </div>
-        </div>
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="node_modules/three/build/three.min.js"></script>
-        <script src="node_modules/dat.gui/build/dat.gui.min.js"></script>
+        <script src="node_modules/three/examples/js/controls/OrbitControls.js"></script>
+        <script src="node_modules/dat.gui/build/dat.gui.js"></script>
         <script src="node_modules/clone/clone.js"></script>
-        <script src="js/orbitals_settings.js"></script>
-        <script src="js/orbitals_core.js"></script>
-        <script src="js/orbitals.js"></script>
+        <script src="js/fetch.js"></script>
+        <script src="js/settings.js"></script>
+        <script src="js/gui.js"></script>
+        <script src="js/timer.js"></script>
+        <script src="js/index.js"></script>
     </body>
 </html>

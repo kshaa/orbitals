@@ -1,2 +1,5 @@
 # Npm downloads
 node_modules**
+
+# Vim buffers
+*.sw*
