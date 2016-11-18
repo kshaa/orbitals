@@ -1,20 +1,19 @@
 var download = {
     remote: function(file) {
-        try {
-            $(function() {     
-                $.ajax({
-                    url:file,
-                    success: function(content) {
-                        check.content(file, content);
-                    }
-                });        
-            });
-        } catch (err) {
-            settings.path.rollback();
-            gui.reinit();
-            alert("Failed to download file");
-            throw new Error("Failed to download remote file: " + err);
-        }
+        $(function() {     
+            $.ajax({
+                url: file,
+                dataType: "text",
+                success: function(data, state, settings) {
+                    check.content(file, data);
+                },
+                error: function(request, options, error) {
+                    settings.path.rollback();
+                    gui.reinit();
+                    alert("Failed to download file");
+                }
+            });        
+        });
     },
     local: function(file) {
         try {
@@ -62,14 +61,20 @@ var check = {
     content: function (filename, content) {
         switch (this.extension(filename)) {
             case "json":
-                console.log("Parsing the content of JSON file");
-                // Parse json
-                console.log(content);
-                break;
             case "js":
-                console.log("Parsing the content of JS file");
-                // Parse js
-                console.log(content);
+                var success = true;
+                try {
+                    var generation = eval( "(" + content + ")" );
+                } catch (err) {
+                    success = false;
+                    alert("Loaded Javascript had errors");
+                    throw new Error(err);
+                }
+                if (success) {
+                    planets = generation;
+                    settings.path.save(filename);
+                    gui.reinit();
+                }
                 break;
             default:
                 settings.path.rollback();

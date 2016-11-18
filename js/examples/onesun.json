@@ -1,1 +1,4 @@
-Parsable json data for a solar system
+{
+    "mesh": "cube",
+    "color": "three"
+}

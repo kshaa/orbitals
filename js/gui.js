@@ -17,7 +17,7 @@ var gui = {
         this.path.name("Configuration");
         this.path.onChange(check.path);
         pathinput = document.getElementById('configuration');
-        pathinput.addEventListener('change', this.handleSelection, false);
+        pathinput.onchange = this.handleSelection;
 
         this.speed = this.instance.add(settings.speed, "value", settings.speed.min, settings.speed.max);
         this.speed.name("Speed");
@@ -38,6 +38,7 @@ var gui = {
     },
     handleSelection: function(evt) {
         var path = evt.target.files[0];
+        settings.path.current = path;
         check.path(path);
     }
 }

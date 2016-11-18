@@ -9,6 +9,19 @@ var settings = {
         },
         rollback: function() {
             this.current = this.previous;
+        },
+        save: function(filename) {
+            var unique = true;
+            for (var path in this.list) {
+                if (this.list[path] == this.current) {
+                    unique = false;
+                }
+            }
+            if (unique) {
+                this.list[filename] = this.current;
+            }
+            this.current = this.current;
+            this.previous = this.current;
         }
     },
     speed: {
@@ -19,5 +32,9 @@ var settings = {
     pause: true,
     reload: function() {
         check.path(this.path.current);
+    },
+    outsource: function() {
+        // Export 'planets' json;
+        // Save it locally;
     }
 }
