@@ -38,6 +38,8 @@ function init() {
     var light = new THREE.AmbientLight(0x222222);
     scene.add(light);
 
+    // 
+
     check.path(settings.path.current);    
 }
 

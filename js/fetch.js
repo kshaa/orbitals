@@ -68,6 +68,10 @@ var check = {
                 } catch (err) {
                     success = false;
                     alert("Loaded Javascript had errors");
+                    // In case any import fails or has bugs, you
+                    // can eval it manually in the browser console
+                    // and try finding the error by using planetsjs variable
+                    planetsjs = content;
                     throw new Error(err);
                 }
                 if (success) {
