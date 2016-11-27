@@ -59,9 +59,13 @@ var download = {
 }
 
 var check = {
-    extension: function(filename) {
+    extension: function(path) {
         regex = /([^.]+)?$/;
-        return regex.exec(filename)[0].toLowerCase();
+        return regex.exec(path)[0].toLowerCase();
+    },
+    filename: function(path) {
+        regex = /^((.+)\/)?([^\/]+)$/;
+        return regex.exec(path)[3];
     },
     path: function(path) {
         try {
@@ -111,7 +115,7 @@ var check = {
                     }
                 }
                 if (success) {
-                    settings.path.save(filename);
+                    settings.path.save();
                     gui.reinit();
                 }
                 break;

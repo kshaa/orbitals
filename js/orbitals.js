@@ -43,7 +43,7 @@ function init() {
 
     // 
 
-    check.path(settings.path.current);    
+    check.path(settings.path.current.value);    
 }
 
 function onWindowResize() {

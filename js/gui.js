@@ -7,7 +7,6 @@ var gui = {
     path: undefined,
     insource: undefined,
     outsource: undefined,
-    path: undefined,
     gravity: undefined,
     speed: undefined,
     pause: undefined,
@@ -24,9 +23,9 @@ var gui = {
         this.structure.open();
 
         // Values, functions
-        this.path = this.structure.add(settings.path, "current", settings.path.list);
+        this.path = this.structure.add(settings.path.current, "key", Object.keys(settings.path.database));
         this.path.name("Configuration");
-        this.path.onChange(check.path);
+        this.path.onChange(this.helpers.check.remote);
         
         this.insource = this.structure.add(this.helpers.click, "insource"); 
         this.insource.name("Import");
@@ -35,7 +34,7 @@ var gui = {
         this.outsource.name("Export");
         
         localpath = document.getElementById('insource');
-        localpath.onchange = this.helpers.checklocal;
+        localpath.onchange = this.helpers.check.local;
 
         this.gravity = this.instance.add(settings.simulation, "gravity", 0, Math.pow(10, -9));
         this.gravity.name("Gravity");
@@ -69,10 +68,22 @@ var gui = {
                 $("#outsource")[0].click();
             }
         },
-        checklocal: function(evt) {
-            var path = evt.target.files[0];
-            settings.path.current = path;
-            check.path(path);
+        check: {
+            local: function(evt) {
+                var path = evt.target.files[0];
+                settings.path.current = {
+                    "key": check.filename(path.name),
+                    "value": path
+                };
+                check.path(settings.path.current.value);
+            },
+            remote: function(key) {
+                settings.path.current = {
+                    "key": key,
+                    "value": settings.path.database[key]
+                };
+                check.path(settings.path.current.value);
+            }
         }
     }
 }

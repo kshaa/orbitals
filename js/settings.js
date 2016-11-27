@@ -1,23 +1,28 @@
 var settings = {
     path: {
-        current: "js/examples/onesun.json",
-        previous: "js/examples/onesun.json",
-        list: {
-            "Random solar system": "js/examples/onesun.js",
+        current: {
+            key: "Random solar system",
+            value: "js/examples/onesun.js"
+        },
+        previous: this.current,
+        database: {
+            "Random solar system": "js/examples/onesun.js", 
             "Stable solar system": "js/examples/onesun.json"
         },
         rollback: function() {
             this.current = this.previous;
         },
-        save: function(filename) {
+        save: function() {
             var unique = true;
-            for (var path in this.list) {
-                if (this.list[path] == this.current) {
+            for (var key in this.database) {
+                if (this.database[key] == this.current.value) {
                     unique = false;
                 }
             }
             if (unique) {
-                this.list[filename] = this.current;
+                var key = this.current.key;
+                var value = this.current.value;
+                this.database[key] = value;
             }
             this.current = this.current;
             this.previous = this.current;
