@@ -1,5 +1,6 @@
 var settings = {
     path: {
+        exportkey: "Orbitals.json",
         current: {
             key: "Random solar system",
             value: "js/examples/onesun.js"

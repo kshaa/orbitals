@@ -36,6 +36,27 @@ var convert = {
         }
     },
     exporter: {
+        planets: function() {
+            // Fetching objects
+            var objects = $.extend(true, {}, planets);
+            $.map(objects, function(object) {
+                object.object3d.position.set(0,0,0);
+                object.object3d.rotation.set(0,0,0);
+            });
+            scene.updateMatrixWorld();
+            $.map(objects, convert.exporter.object);
+            // Fetching options
+            var options = settings.simulation;
+            // Resetting original objects
+            planets.map(physics.update.position);
+            planets.map(physics.update.rotation);
+            scene.updateMatrixWorld();
+            // Exporting configuration
+            return JSON.stringify({
+                "objects": objects,
+                "options": options
+            });
+        },
         object: function(object) {
             var j = object;
             function exp(val, con) {

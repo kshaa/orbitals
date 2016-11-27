@@ -1,31 +1,10 @@
-function exportconfig() {
-    // Fetching objects
-    var objects = $.extend(true, {}, planets);
-    $.map(objects, function(object) {
-        object.object3d.position.set(0,0,0);
-        object.object3d.rotation.set(0,0,0);
-    });
-    scene.updateMatrixWorld();
-    $.map(objects, convert.exporter.object);
-    textualobject = objects[0].object3d;
-    // Fetching options
-    var options = settings.simulation;
-    // Exporting configuration
-    var json = JSON.stringify({
-        "objects": objects,
-        "options": options
-    });
-    blob = new Blob([json], {type: "octet/stream"}),
-    url = window.URL.createObjectURL(blob);
-    $("#outsource").attr('href', url); 
-    $("#outsource").attr('download', "orbitals.json"); 
-    // Resetting objects
-    planets.map(physics.update.position);
-    planets.map(physics.update.rotation);
-    scene.updateMatrixWorld();
-}
-
 var download = {
+    store: function(content, filename) {
+        blob = new Blob([content], {type: "octet/stream"}),
+        url = window.URL.createObjectURL(blob);
+        $("#outsource").attr('href', url); 
+        $("#outsource").attr('download', filename); 
+    },
     remote: function(file) {
         $(function() {     
             $.ajax({

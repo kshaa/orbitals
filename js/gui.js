@@ -64,7 +64,8 @@ var gui = {
                 $("#insource").click();
             },
             outsource: function() {
-                exportconfig();
+                var configuration = convert.exporter.planets();
+                download.store(configuration, settings.path.exportkey);
                 $("#outsource")[0].click();
             }
         },
