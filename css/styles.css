@@ -14,7 +14,9 @@
     top:1%;
     right:1%;
 }
-#gui #configuration {
+#gui #outsource,
+#gui #insource {
+    position: absolute;
     visibility: hidden;
     width: 0;
     height: 0;

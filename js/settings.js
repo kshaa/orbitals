@@ -4,8 +4,7 @@ var settings = {
         previous: "js/examples/onesun.json",
         list: {
             "Random solar system": "js/examples/onesun.js",
-            "Stable solar system": "js/examples/onesun.json",
-            "Custom": ""
+            "Stable solar system": "js/examples/onesun.json"
         },
         rollback: function() {
             this.current = this.previous;
@@ -24,17 +23,17 @@ var settings = {
             this.previous = this.current;
         }
     },
-    speed: {
-        value: 1,
-        min: 0,
-        max: 5
+    simulation: {
+        speed: 1,
+        pause: true,
+        gravity: 6.67 * Math.pow(10, -11)
     },
-    pause: true,
     reload: function() {
         check.path(this.path.current);
     },
-    outsource: function() {
-        // Export 'planets' json;
-        // Save it locally;
+    setup: function(options) {
+        for(var key in options) {
+            settings.simulation[key] = options[key];
+        }
     }
 }

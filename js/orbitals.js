@@ -5,7 +5,7 @@ init();
 animate();
 
 function init() {
-    renderer = new THREE.WebGLRenderer();
+    renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById("threejs").appendChild(renderer.domElement);
@@ -31,12 +31,15 @@ function init() {
 
     scene = new THREE.Scene();
 
-    var grid = new THREE.GridHelper(20, 10, 0xabaaaa, 0x444444);
+    grid = new THREE.GridHelper(20, 10, 0xabaaaa, 0x444444);
     grid.position.y = -6
     scene.add(grid);
 
-    var light = new THREE.AmbientLight(0x222222);
-    scene.add(light);
+    light1 = new THREE.AmbientLight(0x111111, 3);
+    scene.add(light1);
+
+    light2 = new THREE.PointLight( 0xff0040, 2, 50 );
+    scene.add(light2);
 
     // 
 
@@ -52,6 +55,7 @@ function onWindowResize() {
 
 function animate () {
     requestAnimationFrame(animate);
+    controls.update();
     timer.update();
 
     renderer.render(scene, camera);

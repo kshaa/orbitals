@@ -7,17 +7,21 @@
     <body>
         <div id="threejs"></div>
         <div id="gui">
-            <input type="file" id="configuration" name="configuration"/>
+            <input type="file" id="insource" name="configuration"/>
+            <a id="outsource" name="configuration">Download export</a>
         </div>
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="node_modules/three/build/three.min.js"></script>
         <script src="node_modules/three/examples/js/controls/OrbitControls.js"></script>
+        <script src="node_modules/three/examples/js/exporters/OBJExporter.js"></script>
+        <script src="node_modules/three/examples/js/loaders/OBJLoader.js"></script>
         <script src="node_modules/dat.gui/build/dat.gui.js"></script>
-        <script src="node_modules/clone/clone.js"></script>
-        <script src="js/fetch.js"></script>
+        <script src="js/physics/physics.js"></script>
+        <script src="js/convert.js"></script>
+        <script src="js/transfer.js"></script>
         <script src="js/settings.js"></script>
         <script src="js/gui.js"></script>
         <script src="js/timer.js"></script>
-        <script src="js/index.js"></script>
+        <script src="js/orbitals.js"></script>
     </body>
 </html>
