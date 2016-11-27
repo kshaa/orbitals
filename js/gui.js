@@ -7,6 +7,13 @@ var gui = {
     path: undefined,
     insource: undefined,
     outsource: undefined,
+    
+    gridvisible: undefined,
+    gridcolor: undefined,
+    ambientcolor: undefined,
+    highlightcolor: undefined,
+    backgroundcolor: undefined,
+
     gravity: undefined,
     speed: undefined,
     pause: undefined,
@@ -18,11 +25,15 @@ var gui = {
         domElement = document.getElementById('gui');
         domElement.appendChild(this.instance.domElement);
 
-        // Folders
+        // Structure
+        var closed = typeof this.structure == "undefined" ? false : this.structure.closed;
         this.structure = this.instance.addFolder("Structure");
-        this.structure.open();
+        if (closed) {
+            this.structure.close();
+        } else {
+            this.structure.open();
+        }
 
-        // Values, functions
         this.path = this.structure.add(settings.path.current, "key", Object.keys(settings.path.database));
         this.path.name("Configuration");
         this.path.onChange(this.helpers.check.remote);
@@ -36,10 +47,41 @@ var gui = {
         localpath = document.getElementById('insource');
         localpath.onchange = this.helpers.check.local;
 
-        this.gravity = this.instance.add(settings.simulation, "gravity", 0, Math.pow(10, -9));
+        // Appearance
+        var closed = typeof this.appearance == "undefined" ? true : this.appearance.closed;
+        this.appearance = this.instance.addFolder("Appearance");
+        if (closed) {
+            this.appearance.close();
+        } else {
+            this.appearance.open();
+        }
+
+        this.gridvisible = this.appearance.add(settings.appearance, "gridvisible");
+        this.gridvisible.onChange(physics.update.appearance);
+        this.gridvisible.name("Grid on");
+
+        this.gridcolor = this.appearance.addColor(settings.appearance, "gridcolor");
+        this.gridcolor.onChange(physics.update.appearance);
+        this.gridcolor.name("Grid color");
+
+        this.ambientcolor = this.appearance.addColor(settings.appearance, "ambientcolor");
+        this.ambientcolor.onChange(physics.update.appearance);
+        this.ambientcolor.name("Ambient color");
+
+        this.highlightcolor = this.appearance.addColor(settings.appearance, "highlightcolor");
+        this.highlightcolor.onChange(physics.update.appearance);
+        this.highlightcolor.name("Highlight color");
+
+        this.backgroundcolor = this.appearance.addColor(settings.appearance, "backgroundcolor");
+        this.backgroundcolor.onChange(physics.update.appearance);
+        this.backgroundcolor.name("Background color");
+
+
+        // Simulation
+        this.gravity = this.instance.add(settings.simulation, "gravity", 0, 2 * 6.67 * Math.pow(10, -11));
         this.gravity.name("Gravity");
 
-        this.speed = this.instance.add(settings.simulation, "speed", 0, 5);
+        this.speed = this.instance.add(settings.simulation, "speed", 0, 3);
         this.speed.name("Speed");
 
         this.pause = this.instance.add(settings.simulation, "pause");

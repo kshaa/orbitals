@@ -13,15 +13,14 @@ function init() {
     //
 
     timer = new Timer();
-
     gui.init();
-
     window.addEventListener('resize', onWindowResize, false);
 
     //
 
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
-    camera.position.z = 25;
+    camera.position.set(2.3, 2.6, 4.6);
+    camera.lookAt(new THREE.Vector3(0,0,0));
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
@@ -35,15 +34,18 @@ function init() {
     grid.position.y = -6
     scene.add(grid);
 
-    light1 = new THREE.AmbientLight(0x111111, 3);
-    scene.add(light1);
+    ambientlight = new THREE.AmbientLight(0x111111, 3);
+    ambientlight.position.set(1,2,3);
+    scene.add(ambientlight);
 
-    light2 = new THREE.PointLight( 0xff0040, 2, 50 );
-    scene.add(light2);
+    highlight = new THREE.PointLight( 0xff0040, 2, 50 );
+    highlight.position.set(3,2,1);
+    scene.add(highlight);
 
     // 
 
     check.path(settings.path.current.value);    
+    physics.update.appearance();
 }
 
 function onWindowResize() {

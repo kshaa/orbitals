@@ -9,6 +9,3 @@ Planet orbiting simulator inspired by [Spiral](https://github.com/kshaa/spiral).
     * Velocity
     * Gravity
     * Collisions
-#### Less important
-* Appearance subfolder in gui
-* Find out how to make camera smoother

@@ -29,17 +29,29 @@ var settings = {
             this.previous = this.current;
         }
     },
+    appearance: {
+        gridvisible: true,
+        gridcolor: "#abaaaa",
+        ambientcolor: "#0000ff",
+        highlightcolor: "#f0f0f0",
+        backgroundcolor: "#040409",
+        lightweightcolor: "#222222",
+        heavyweightcolor: "#2222dd"
+    },
     simulation: {
         speed: 1,
         pause: true,
         gravity: 6.67 * Math.pow(10, -11)
     },
     reload: function() {
-        check.path(this.path.current);
+        check.path(this.path.current.value);
     },
     setup: function(options) {
-        for(var key in options) {
-            settings.simulation[key] = options[key];
+        for(var key in options.appearance) {
+            settings.appearance[key] = options.appearance[key];
+        }
+        for(var key in options.simulation) {
+            settings.simulation[key] = options.simulation[key];
         }
     }
 }

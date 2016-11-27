@@ -9,8 +9,17 @@ var physics = {
         $.map(planets, this.update.position);
         $.map(planets, this.update.rotation);
         $.map(planets, this.update.impose);
+        this.update.appearance();
     },
     update: {
+        appearance: function(_) {
+            var d = settings.appearance;
+            grid.visible = d.gridvisible;
+            grid.material.color.setStyle(d.gridcolor);
+            ambientlight.color.setStyle(d.ambientcolor);
+            highlight.color.setStyle(d.highlightcolor);
+            renderer.setClearColor(d.backgroundcolor);
+        },
         position: function(object) {
             object.object3d.position.set(
                 object.position.value.x,

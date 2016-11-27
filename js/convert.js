@@ -46,7 +46,10 @@ var convert = {
             scene.updateMatrixWorld();
             $.map(objects, convert.exporter.object);
             // Fetching options
-            var options = settings.simulation;
+            var options = {
+                "appearance": settings.appearance,
+                "simulation": settings.simulation
+            }
             // Resetting original objects
             planets.map(physics.update.position);
             planets.map(physics.update.rotation);
