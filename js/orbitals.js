@@ -45,7 +45,6 @@ function init() {
     // 
 
     check.path(settings.path.current.value);    
-    physics.update.appearance();
 }
 
 function onWindowResize() {

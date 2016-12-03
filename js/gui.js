@@ -57,23 +57,23 @@ var gui = {
         }
 
         this.gridvisible = this.appearance.add(settings.appearance, "gridvisible");
-        this.gridvisible.onChange(physics.update.appearance);
+        this.gridvisible.onChange(mechanics.update.appearance.gridvisible);
         this.gridvisible.name("Grid on");
 
         this.gridcolor = this.appearance.addColor(settings.appearance, "gridcolor");
-        this.gridcolor.onChange(physics.update.appearance);
+        this.gridcolor.onChange(mechanics.update.appearance.gridcolor);
         this.gridcolor.name("Grid color");
 
         this.ambientcolor = this.appearance.addColor(settings.appearance, "ambientcolor");
-        this.ambientcolor.onChange(physics.update.appearance);
+        this.ambientcolor.onChange(mechanics.update.appearance.ambientcolor);
         this.ambientcolor.name("Ambient color");
 
         this.highlightcolor = this.appearance.addColor(settings.appearance, "highlightcolor");
-        this.highlightcolor.onChange(physics.update.appearance);
+        this.highlightcolor.onChange(mechanics.update.appearance.highlightcolor);
         this.highlightcolor.name("Highlight color");
 
         this.backgroundcolor = this.appearance.addColor(settings.appearance, "backgroundcolor");
-        this.backgroundcolor.onChange(physics.update.appearance);
+        this.backgroundcolor.onChange(mechanics.update.appearance.backgroundcolor);
         this.backgroundcolor.name("Background color");
 
 

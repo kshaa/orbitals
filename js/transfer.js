@@ -87,8 +87,7 @@ var check = {
                 }
                 if (success) {
                     try {
-                        settings.setup(options);
-                        physics.setup(objects);
+                        mechanics.setup(options, objects);
                     } catch (err) {
                         error(err, "Loaded Javascript had errors");
                     }
