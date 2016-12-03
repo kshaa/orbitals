@@ -1,7 +1,7 @@
 (function() {
     var options = {
         "simulation": {
-            "gravity": 6.67 * Math.pow(10, -11),
+            "gravity": 4.45 * Math.pow(10, -16),
             "speed": 1,
             "pause": true
         },
@@ -34,10 +34,11 @@
             var clockwise = (options.generation.clockwise ? 1 : -1);
             var deg90 = new THREE.Euler(0,(clockwise*Math.PI/2),0);
             var position = p.clone();
-            var velocity = p.clone();
+            var velocityv = p.clone();
+            var velocitys = Math.pow(position.length(), 0.5)/2.3;
             object["position"] = {
                 "value": position,
-                "velocity": velocity.applyEuler(deg90).multiplyScalar(0.5)
+                "velocity": velocityv.applyEuler(deg90).setLength(velocitys)
             }
             function deg(n) { return Math.PI * Math.random() / 180 * n; }
             object["rotation"] = {

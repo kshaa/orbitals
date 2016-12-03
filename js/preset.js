@@ -1,5 +1,6 @@
 var preset =  {
-    populate: function(o) {
+    populate: function(o, n) {
+        o.id                    = o.id                      || n;
         o.object3d              = o.object3d                || preset.object3d();
         o.mass                  = o.mass                    || preset.mass();
         o.position              = o.position                || {};
@@ -19,10 +20,10 @@ var preset =  {
         object3d = new THREE.Mesh(geometry, material);
         return object3d;
     },
-    vector3d: function() {
+    euler3d: function() {
         return new THREE.Euler(0, 0, 0);
     },
-    euler3d: function() {
+    vector3d: function() {
         return new THREE.Vector3(0, 0, 0);
     },
     mass: function() {

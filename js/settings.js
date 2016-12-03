@@ -39,7 +39,7 @@ var settings = {
     simulation: {
         speed: 1,
         pause: true,
-        gravity: 6.67 * Math.pow(10, -11)
+        gravity: 4.45 * Math.pow(10, -16) 
     },
     reload: function() {
         check.path(this.path.current.value);

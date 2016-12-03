@@ -78,7 +78,7 @@ var gui = {
 
 
         // Simulation
-        this.gravity = this.instance.add(settings.simulation, "gravity", 0, 2 * 6.67 * Math.pow(10, -11));
+        this.gravity = this.instance.add(settings.simulation, "gravity");
         this.gravity.name("Gravity");
 
         this.speed = this.instance.add(settings.simulation, "speed", 0, 3);
