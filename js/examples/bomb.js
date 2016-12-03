@@ -5,11 +5,11 @@
             "speed": 1
         },
         "appearance": {
-            gridvisible: true,
-            gridcolor: "#abaaaa",
-            ambientcolor: "#0000ff",
-            highlightcolor: "#f0f0f0",
-            backgroundcolor: "#040409"
+            "gridvisible": true,
+            "gridcolor": "#000000",
+            "ambientcolor": "#00ff00",
+            "highlighcolor": "#f0f0f0",
+            "backgroundcolor": "#1e1322"
         },
         "generation": {
             "count": 200,
@@ -22,26 +22,21 @@
                 "base": 0.1
             },
             "spread": {
-                "min": 0.7,
-                "max": 1.0
+                "min": 0.6,
+                "max": 0.8
             },
             "clockwise": true,
             "randomize": true
         }
     }
     var generate = {
-        "object": function(s, p, m, b, c) {
+        "object": function(s, p, m) {
             var object = {};
             var geometry = new THREE.BoxGeometry(s, s, s);
-            if (b) {
-                var col = new THREE.Color("hsl(" + c + ", 100%, 40%)");
-            } else {
-                var col = new THREE.Color("hsl(" + c + ", 100%, 65%)");
-            }
-            var material = new THREE.MeshPhongMaterial({ color: col, specular: 0x111111, shininess: 50 });
+            var material = new THREE.MeshPhongMaterial({ color: 0x555555, specular: 0x111111, shininess: 50 });
             object["object3d"] = new THREE.Mesh(geometry, material);
             var randomize = options.generation.randomize;
-            object["mass"] = Math.pow(10, m) * (randomize ? Math.random() * 0.4 + 0.8 : 1);
+            object["mass"] = Math.pow(10, m) * (randomize ? Math.random() * 10 : 1);
             var clockwise = (options.generation.clockwise ? 1 : -1);
             var deg90 = new THREE.Euler(0,(clockwise*Math.PI/2),0);
             var position = p.clone();
@@ -62,7 +57,6 @@
         },
         "solar": function() {
             var objects = new Array();
-            var color = Math.round(Math.random() * 360);
             // Planets
             for (i = 0; i < options.generation.count; i++) {
                 var deg360 = Math.PI * Math.random() * 2;
@@ -73,22 +67,20 @@
                 var position = new THREE.Vector3(distance, 0, 0).applyEuler(rotation);
                 var size = options.generation.size.base;
                 var mass = options.generation.mass.base;
-                var center = false;
-                objects[objects.length] = this.object(size, position, mass, center, color);
+                objects[objects.length] = this.object(size, position, mass);
             }
             // Sun
             var size = options.generation.size.center;
             var mass = options.generation.mass.center;
             var position = new THREE.Vector3(0,0,0);
-            var center = true;
-            objects[objects.length] = this.object(size, position, mass, center, color);
+            objects[objects.length] = this.object(size, position, mass);
 
             return objects
         },
         "objects": function() {
             var p1 = new THREE.Vector3(0,0,0);
-            var r1 = new THREE.Euler(0.3, 0.2, 0);
-            var b1 = new THREE.Vector3(0,0,0);
+            var r1 = new THREE.Euler(0.3, 0, 0);
+            var b1 = new THREE.Vector3(0,0,-0.2);
             var sol = $.map(this.solar(), function(o) {
                 var moved = manipulate.move(p1, o);
                 var rotated = manipulate.rotate(r1, moved);

@@ -2,13 +2,14 @@ var settings = {
     path: {
         exportkey: "Orbitals.json",
         current: {
-            key: "Random solar system",
+            key: "Solar system",
             value: "js/examples/onesun.js"
         },
         previous: this.current,
         database: {
-            "Random solar system": "js/examples/onesun.js", 
-            "Stable solar system": "js/examples/onesun.json"
+            "Solar system": "js/examples/onesun.js", 
+            "Binary system": "js/examples/twosun.js",
+            "Explosion": "js/examples/bomb.js"
         },
         rollback: function() {
             this.current = this.previous;
@@ -46,7 +47,6 @@ var settings = {
     },
     setup: function(options) {
         for(var key in options.appearance) {
-            console.log(key);
             settings.appearance[key] = options.appearance[key];
         }
         for(var key in options.simulation) {

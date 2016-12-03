@@ -15,6 +15,7 @@ function init() {
     timer = new Timer();
     gui.init();
     window.addEventListener('resize', onWindowResize, false);
+    window.addEventListener('keydown', controls.check, false);
 
     //
 
