@@ -1,5 +1,6 @@
 var mechanics = {
     setup: function(options, objects) {
+        settings.setup(options);
         $.map(planets, this.update.render.dispose);
         planets = $.map(objects, preset.populate);
         this.update.appearance.all();

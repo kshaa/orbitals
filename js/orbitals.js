@@ -62,7 +62,11 @@ function animate () {
     if (!settings.simulation.pause) {
         mechanics.update.physics.all();
         mechanics.update.render.all();
+        if (!tracer.data.pause) {
+            tracer.render.all();
+        }
     }
+
 
     renderer.render(scene, camera);
 }

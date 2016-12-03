@@ -17,7 +17,7 @@
             },
             "spread": {
                 "min": 1.5,
-                "max": 4
+                "max": 3
             },
             "clockwise": true,
             "randomize": true
@@ -35,7 +35,7 @@
             var deg90 = new THREE.Euler(0,(clockwise*Math.PI/2),0);
             var position = p.clone();
             var velocityv = p.clone();
-            var velocitys = Math.pow(position.length(), 0.5)/2.3;
+            var velocitys = Math.pow(position.length(), 0.5)/3;
             object["position"] = {
                 "value": position,
                 "velocity": velocityv.applyEuler(deg90).setLength(velocitys)
@@ -72,7 +72,7 @@
         }
     }
     return {
-        "options": options.simulation,
+        "options": options,
         "objects": generate.objects()
     };
 })()

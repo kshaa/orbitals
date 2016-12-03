@@ -38,7 +38,7 @@ var settings = {
     },
     simulation: {
         speed: 1,
-        pause: true,
+        pause: false,
         gravity: 4.45 * Math.pow(10, -16) 
     },
     reload: function() {
@@ -46,6 +46,7 @@ var settings = {
     },
     setup: function(options) {
         for(var key in options.appearance) {
+            console.log(key);
             settings.appearance[key] = options.appearance[key];
         }
         for(var key in options.simulation) {
