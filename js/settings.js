@@ -35,8 +35,6 @@ var settings = {
         ambientcolor: "#0000ff",
         highlightcolor: "#f0f0f0",
         backgroundcolor: "#040409",
-        lightweightcolor: "#222222",
-        heavyweightcolor: "#2222dd"
     },
     simulation: {
         speed: 1,

@@ -59,5 +59,10 @@ function animate () {
     controls.update();
     timer.update();
 
+    if (!settings.simulation.pause) {
+        mechanics.update.physics.all();
+        mechanics.update.render.all();
+    }
+
     renderer.render(scene, camera);
 }

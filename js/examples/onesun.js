@@ -37,13 +37,12 @@
             var velocity = p.clone();
             object["position"] = {
                 "value": position,
-                "velocity": velocity.applyEuler(deg90).multiply(velocity).multiplyScalar(Math.pow(10,-4))
+                "velocity": velocity.applyEuler(deg90).multiplyScalar(0.5)
             }
-            function deg360() { return Math.PI * Math.random() * 2; }
-            function deg1() { return Math.PI * Math.random() / 180; }
+            function deg(n) { return Math.PI * Math.random() / 180 * n; }
             object["rotation"] = {
-                "value": new THREE.Euler(deg360(), deg360(), deg360()),
-                "velocity": new THREE.Euler(deg1(), deg1(), deg1())
+                "value": new THREE.Euler(deg(360), deg(360), deg(360)),
+                "velocity": new THREE.Euler(deg(60), deg(60), deg(60))
             }
             return object;
         },

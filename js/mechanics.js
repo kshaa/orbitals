@@ -1,11 +1,13 @@
 var mechanics = {
     setup: function(options, objects) {
-        $.map(planets, this.update.dispose);
+        $.map(planets, this.update.render.dispose);
         planets = $.map(objects, preset.populate);
-        this.update.structure.all();
         this.update.appearance.all();
+        this.update.physics.all();
+        this.update.render.all();
     },
     update: {
+        physics: physics,
         appearance: {
             all: function() {
                 var d = settings.appearance;
@@ -21,7 +23,7 @@ var mechanics = {
             highlightcolor: function(v) { highlight.color.setStyle(v); },
             backgroundcolor: function(v) { renderer.setClearColor(v); }
         },
-        structure: {
+        render: {
             all: function() {
                 $.map(planets, this.position);
                 $.map(planets, this.rotation);
