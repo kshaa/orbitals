@@ -2,8 +2,8 @@ var settings = {
     path: {
         exportkey: "Orbitals.json",
         current: {
-            key: "Solar system",
-            value: "js/examples/onesun.js"
+            key: "Binary system",
+            value: "js/examples/twosun.js"
         },
         previous: this.current,
         database: {
