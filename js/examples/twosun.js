@@ -29,11 +29,15 @@
         }
     }
     var generate = {
-        "object": function(s, p, m) {
+        "object": function(s, p, m, b, c) {
             var object = {};
+            if (b) {
+                object["color"] = new THREE.Color("hsl(" + c + ", 100%, 40%)");
+            } else {
+                object["color"] = new THREE.Color("hsl(" + c + ", 100%, 60%)");
+            }
             var geometry = new THREE.BoxGeometry(s, s, s);
-            var material = new THREE.MeshPhongMaterial({ color: 0x555555, specular: 0x111111, shininess: 50 });
-            object["object3d"] = new THREE.Mesh(geometry, material);
+            object["object3d"] = new THREE.Mesh(geometry);
             var randomize = options.generation.randomize;
             object["mass"] = Math.pow(10, m) * (randomize ? Math.random() * 0.2 + 0.9 : 1);
             var clockwise = (options.generation.clockwise ? 1 : -1);
@@ -54,7 +58,7 @@
             }
             return object;
         },
-        "solar": function() {
+        "solar": function(color) {
             var objects = new Array();
             // Planets
             for (i = 0; i < options.generation.count; i++) {
@@ -66,30 +70,34 @@
                 var position = new THREE.Vector3(distance, 0, 0).applyEuler(rotation);
                 var size = options.generation.size.base;
                 var mass = options.generation.mass.base;
-                objects[objects.length] = this.object(size, position, mass);
+                var center = false;
+                objects[objects.length] = this.object(size, position, mass, center, color);
             }
             // Sun
             var size = options.generation.size.center;
             var mass = options.generation.mass.center;
             var position = new THREE.Vector3(0,0,0);
-            objects[objects.length] = this.object(size, position, mass);
+            var center = true;
+            objects[objects.length] = this.object(size, position, mass, center, color);
 
             return objects
         },
         "objects": function() {
+            var c1 = Math.round(Math.random() * 10);
             var p1 = new THREE.Vector3(2,-1,0);
             var r1 = new THREE.Euler(0.3, 0, 0);
             var b1 = new THREE.Vector3(0,0,-0.1);
-            var sol1 = $.map(this.solar(), function(o) {
+            var sol1 = $.map(this.solar(c1), function(o) {
                 var moved = manipulate.move(p1, o);
                 var rotated = manipulate.rotate(r1, moved);
                 var boosted = manipulate.boost(b1, rotated);
                 return boosted;
             });
+            var c2 = Math.round(235 + Math.random() * 10);
             var p2 = new THREE.Vector3(-2,-1,0);
             var r2 = new THREE.Euler(-0.3, 0, 0);
             var b2 = new THREE.Vector3(0,0,0.2);
-            var sol2 = $.map(this.solar(), function(o) {
+            var sol2 = $.map(this.solar(c2), function(o) {
                 var moved = manipulate.move(p2, o);
                 var rotated = manipulate.rotate(r2, moved);
                 var boosted = manipulate.boost(b2, rotated);

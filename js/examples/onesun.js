@@ -7,7 +7,7 @@
             gridvisible: true,
             gridcolor: "#abaaaa",
             ambientcolor: "#0000ff",
-            highlightcolor: "#f0f0f0",
+            highlightcolor: "#8c8c8c",
             backgroundcolor: "#040409"
         },
         "generation": {
@@ -31,11 +31,6 @@
     var generate = {
         "object": function(s, p, m, b, c) {
             var object = {};
-            if (b) {
-                object["color"] = new THREE.Color("hsl(" + c + ", 100%, 40%)");
-            } else {
-                object["color"] = new THREE.Color("hsl(" + c + ", 100%, 65%)");
-            }
             var geometry = new THREE.BoxGeometry(s, s, s);
             object["object3d"] = new THREE.Mesh(geometry);
             var randomize = options.generation.randomize;

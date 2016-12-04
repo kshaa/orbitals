@@ -22,7 +22,11 @@ var mechanics = {
             gridvisible: function(v) { grid.visible = v; },
             gridcolor: function(v) { grid.material.color.setStyle(v); },
             ambientcolor: function(v) { ambientlight.color.setStyle(v); },
-            highlightcolor: function(v) { highlight.color.setStyle(v); },
+            highlightcolor: function(v) { 
+                highlight1.color.setStyle(v);
+                highlight2.color.setStyle(v);
+                highlight3.color.setStyle(v);
+            },
             backgroundcolor: function(v) { renderer.setClearColor(v); }
         },
         render: {

@@ -39,9 +39,17 @@ function init() {
     ambientlight.position.set(1,2,3);
     scene.add(ambientlight);
 
-    highlight = new THREE.PointLight( 0xff0040, 2, 50 );
-    highlight.position.set(3,2,1);
-    scene.add(highlight);
+    highlight1 = new THREE.PointLight( 0xff0040, 2, 50 );
+    highlight1.position.set(3,2,1);
+    scene.add(highlight1);
+
+    highlight2 = new THREE.PointLight( 0xff0040, 2, 50 );
+    highlight2.position.set(-3,2,-1);
+    scene.add(highlight2);
+
+    highlight3 = new THREE.PointLight( 0xff0040, 2, 50 );
+    highlight3.position.set(-3,-2,1);
+    scene.add(highlight3);
 
     // 
 

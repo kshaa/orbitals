@@ -8,7 +8,7 @@ var physics = {
         $.map(planets, this.rotation);
     },
     position: function(object) {
-        var t = timer.time;
+        var t = 1 / 60;
         var p = object.position.value.clone();
         var v = object.position.velocity.clone();
         object.position.value.set(
@@ -28,7 +28,7 @@ var physics = {
         );
     },
     rotation: function(object) {
-        var t = timer.time;
+        var t = 1 / 60;
         var r = object.rotation.value.clone();
         var v = object.rotation.velocity.clone();
         object.rotation.value.set(
