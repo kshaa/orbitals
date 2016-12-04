@@ -1,6 +1,7 @@
 var preset =  {
     populate: function(o, n) {
         o.id                    = o.id                      || n;
+        o.color                 = o.color                   || preset.color();
         o.object3d              = o.object3d                || preset.object3d();
         o.mass                  = o.mass                    || preset.mass();
         o.position              = o.position                || {};
@@ -12,6 +13,9 @@ var preset =  {
         o.rotation.value        = o.rotation.value          || preset.euler3d();
         o.rotation.velocity     = o.rotation.velocity       || preset.euler3d();
         return o;
+    },
+    color: function() {
+        return new THREE.Color(1,1,1);
     },
     object3d: function() {
         var s = 0.1;

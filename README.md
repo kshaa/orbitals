@@ -10,7 +10,8 @@ Planet orbiting simulator inspired by [Spiral](https://github.com/kshaa/spiral).
 
 Objects can be imported with a self-executing .js, or a static .json file.
 Imported file must return or be structured as presented below.
-To transform .js to .json you can just JSON.stringify() your object.
+To transform .js to .json you can just JSON.stringify() this.
+Object3d is exported and imported with default OBJLoader, OBJExporter, therefore materials are ignored.
 ```
 {
     options: {
@@ -22,7 +23,6 @@ To transform .js to .json you can just JSON.stringify() your object.
               backgroundcolor: "#040409",
           },
           simulation: {
-              speed: 1,
               pause: false,
               gravity: 4.45 * Math.pow(10, -16)
           }
@@ -31,6 +31,7 @@ To transform .js to .json you can just JSON.stringify() your object.
         {
             id:       ":: Integer",
             object3d: ":: THREE.Object3d",
+            color:    ":: THREE.Color",
             mass:     ":: Float",
             position: {
                 value:        ":: THREE.Vector3",

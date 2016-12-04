@@ -31,14 +31,13 @@
     var generate = {
         "object": function(s, p, m, b, c) {
             var object = {};
-            var geometry = new THREE.BoxGeometry(s, s, s);
             if (b) {
-                var col = new THREE.Color("hsl(" + c + ", 100%, 40%)");
+                object["color"] = new THREE.Color("hsl(" + c + ", 100%, 40%)");
             } else {
-                var col = new THREE.Color("hsl(" + c + ", 100%, 65%)");
+                object["color"] = new THREE.Color("hsl(" + c + ", 100%, 65%)");
             }
-            var material = new THREE.MeshPhongMaterial({ color: col, specular: 0x111111, shininess: 50 });
-            object["object3d"] = new THREE.Mesh(geometry, material);
+            var geometry = new THREE.BoxGeometry(s, s, s);
+            object["object3d"] = new THREE.Mesh(geometry);
             var randomize = options.generation.randomize;
             object["mass"] = Math.pow(10, m) * (randomize ? Math.random() * 0.4 + 0.8 : 1);
             var clockwise = (options.generation.clockwise ? 1 : -1);

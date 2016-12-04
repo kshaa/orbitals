@@ -6,6 +6,7 @@ var mechanics = {
         this.update.appearance.all();
         this.update.physics.all();
         this.update.render.all();
+        $.map(planets, this.update.render.color);
     },
     update: {
         physics: physics,
@@ -29,6 +30,13 @@ var mechanics = {
                 $.map(planets, this.position);
                 $.map(planets, this.rotation);
                 $.map(planets, this.impose);
+            },
+            color: function(object) {
+                object.object3d.traverse(function(child) {
+                    if ( child instanceof THREE.Mesh) {
+                        child.material.color = object.color;
+                    }
+                })
             },
             position: function(object) {
                 object.object3d.position.set(

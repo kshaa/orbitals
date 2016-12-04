@@ -10,6 +10,7 @@ var convert = {
                 }
             }
             o.object3d = imp(o.object3d, convert.importer.object3d);
+            o.color = imp(o.color, convert.importer.color);
             o.position.value = imp(o.position.value, convert.importer.vector3d);
             o.position.velocity = imp(o.position.velocity, convert.importer.vector3d);
             o.position.acceleration = imp(o.position.acceleration, convert.importer.vector3d);
@@ -17,6 +18,12 @@ var convert = {
             o.rotation.value = imp(o.rotation.value, convert.importer.euler3d);
             o.rotation.velocity = imp(o.rotation.velocity, convert.importer.euler3d);
             return o;
+        },
+        color: function(colJson) {
+            var r = colJson.r;
+            var g = colJson.g;
+            var b = colJson.b;
+            return new THREE.Color(r, g, b);
         },
         object3d: function(obj3dJson) {
             var loader = new THREE.OBJLoader();
@@ -70,6 +77,7 @@ var convert = {
                 }
             }
             j.object3d = exp(j.object3d, convert.exporter.object3d);
+            j.color = exp(j.color, convert.exporter.color);
             j.position.value = exp(j.position.value, convert.exporter.vector3d);
             j.position.velocity = exp(j.position.velocity, convert.exporter.vector3d);
             j.position.acceleration = exp(j.position.acceleration, convert.exporter.vector3d);
@@ -77,6 +85,16 @@ var convert = {
             j.rotation.value = exp(j.rotation.value, convert.exporter.euler3d);
             j.rotation.velocity = exp(j.rotation.velocity, convert.exporter.euler3d);
             return j;
+        },
+        color: function(col) {
+            var r = col.r;
+            var g = col.g;
+            var b = col.b;
+            return {
+                "r": r,
+                "g": g,
+                "b": b
+            };
         },
         object3d: function(obj3d) {
             var exporter = new THREE.OBJExporter;
