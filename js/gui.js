@@ -16,7 +16,6 @@ var gui = {
 
     gravity: undefined,
     speed: undefined,
-    pause: undefined,
     reload: undefined,
 
     init: function() {
@@ -80,9 +79,6 @@ var gui = {
         // Simulation
         this.gravity = this.instance.add(settings.simulation, "gravity");
         this.gravity.name("Gravity");
-
-        this.speed = this.instance.add(settings.simulation, "speed", 0, 3);
-        this.speed.name("Speed");
 
         this.pause = this.instance.add(settings.simulation, "pause");
         this.pause.name("Pause");

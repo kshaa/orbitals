@@ -38,7 +38,6 @@ var settings = {
         backgroundcolor: "#040409",
     },
     simulation: {
-        speed: 1,
         pause: false,
         gravity: 4.45 * Math.pow(10, -16) 
     },

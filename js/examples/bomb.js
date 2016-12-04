@@ -1,8 +1,7 @@
 (function() {
     var options = {
         "simulation": {
-            "gravity": 4.45 * Math.pow(10, -16),
-            "speed": 1
+            "gravity": 4.45 * Math.pow(10, -16)
         },
         "appearance": {
             "gridvisible": true,
@@ -41,7 +40,7 @@
             var deg90 = new THREE.Euler(0,(clockwise*Math.PI/2),0);
             var position = p.clone();
             var velocityv = p.clone();
-            var velocitys = position.length() / 2;
+            var velocitys = position.length() / 9;
             object["position"] = {
                 "value": position,
                 "velocity": velocityv.applyEuler(deg90).setLength(velocitys),
@@ -80,7 +79,7 @@
         "objects": function() {
             var p1 = new THREE.Vector3(0,0,0);
             var r1 = new THREE.Euler(0.3, 0, 0);
-            var b1 = new THREE.Vector3(0,0,-0.2);
+            var b1 = new THREE.Vector3(0,0,0);
             var sol = $.map(this.solar(), function(o) {
                 var moved = manipulate.move(p1, o);
                 var rotated = manipulate.rotate(r1, moved);

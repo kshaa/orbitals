@@ -1,8 +1,7 @@
 (function() {
     var options = {
         "simulation": {
-            "gravity": 4.45 * Math.pow(10, -16),
-            "speed": 1
+            "gravity": 4.45 * Math.pow(10, -16)
         },
         "appearance": {
             gridvisible: true,
