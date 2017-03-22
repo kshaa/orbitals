@@ -58,8 +58,8 @@ var convert = {
                 "simulation": settings.simulation
             }
             // Resetting original objects
-            planets.map(physics.update.position);
-            planets.map(physics.update.rotation);
+            planets.map(physics.position);
+            planets.map(physics.rotation);
             scene.updateMatrixWorld();
             // Exporting configuration
             return JSON.stringify({
