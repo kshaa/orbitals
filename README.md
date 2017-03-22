@@ -2,46 +2,49 @@
 
 Planet orbiting simulator inspired by [Spiral](https://github.com/kshaa/spiral).
 
-# To-do list
+# Features
 
-* Simple collisions
+* Three.js webgl library for rendering
+* N-body gravitational pull simulation
+* Import / export / store scene, appearance and settings
+* Import formats:
+    1. JS file with self invoking funtion, generating a unique data structure for scene
+    2. JSON file with a static data structure for scene 
+* Sample solar structure generation
+* Bulk structure - speed / acceleration / velocity - manipulation
 
 # Data structure
 
-Objects can be imported with a self-executing .js, or a static .json file.
-Imported file must return or be structured as presented below.
-To transform .js to .json you can just JSON.stringify() this.
-Object3d is exported and imported with default OBJLoader, OBJExporter, therefore materials are ignored.
 ```
 {
     options: {
           appearance: {
-              gridvisible: true,
-              gridcolor: "#abaaaa",
-              ambientcolor: "#0000ff",
-              highlightcolor: "#f0f0f0",
-              backgroundcolor: "#040409",
+              gridvisible       :: Boolean,
+              gridcolor         :: THREE.Color,
+              ambientcolor      :: THREE.Color,
+              highlightcolor    :: THREE.Color,
+              backgroundcolor   :: THREE.Color,
           },
           simulation: {
-              pause: false,
-              gravity: 4.45 * Math.pow(10, -16)
+              pause     :: Boolean,
+              gravity   :: Float 
           }
     },
     objects: [
         {
-            id:       ":: Integer",
-            object3d: ":: THREE.Object3d",
-            color:    ":: THREE.Color",
-            mass:     ":: Float",
+            id          :: Integer,
+            object3d    :: THREE.Object3d,
+            color       :: THREE.Color,
+            mass        :: Float,
             position: {
-                value:        ":: THREE.Vector3",
-                velocity:     ":: THREE.Vector3",
-                acceleration: ":: THREE.Vector3",
-                force:        ":: THREE.Vector3"
+                value           :: THREE.Vector3,
+                velocity        :: THREE.Vector3,
+                acceleration    :: THREE.Vector3,
+                force           :: THREE.Vector3
             },
             rotation: {
-                value:    ":: THREE.Euler",
-                velocity: ":: THREE.Euler"
+                value       :: THREE.Euler,
+                velocity    :: THREE.Euler
             }
         }
     ]
