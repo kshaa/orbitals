@@ -50,3 +50,14 @@ Planet orbiting simulator inspired by [Spiral](https://github.com/kshaa/spiral).
     ]
 }
 ```
+
+# Notes
+
+This code is ancient and not good.  
+
+Usage:
+```
+nvm use
+npm install
+npm run start
+```
